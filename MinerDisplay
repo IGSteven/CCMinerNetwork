@@ -10,11 +10,6 @@ local monitor = peripheral.wrap( 'top' )
 term.redirect( monitor )
 monitor.clear
 
-
-function StartsWith(String,Start)
-   return string.sub(String,1,string.len(Start))==Start
-end
-
 ws.send("Monitor Connected - Miner")
 
 while true do
