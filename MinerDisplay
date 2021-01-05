@@ -37,9 +37,9 @@ while true do
 
     print(response)
 
-    if (response == "Connected!"){
+    if (response == "Connected!") then
         ws.send("MinerScreenSubscribe")
-    }
+    end
 
     if (string.find(response,"MinerStatus:")) then MinerStatus = string.gsub(response, 12);
     elseif (string.find(response,"Miner1:")) then textlines[2] = response;
