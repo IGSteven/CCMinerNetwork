@@ -1,4 +1,6 @@
 local textlines = {"    Mining Turtles Status     ","------------------------------"}
+local MinerStatus = "Miner 1: ? | Miner 2: ? | Miner 3: ? | Miner 4: ? | Miner 5: ?  | Miner 6: ?"
+
 
 -- Connect to WebScoket
 local connectionURL = "ws://minerws.igsteven.com:8080/display"
@@ -20,15 +22,18 @@ for i = 1, #monitors do
         local input = read()
         m.clear()
 
+        m.setCursorPos( 1, -1 )
+        m.write(MinerStatus)
+
         for i = 1, #textlines do
-            mon.setCursorPos( 1, i )
-            mon.write( textlines[i] )
+            m.setCursorPos( 1, i )
+            m.write( textlines[i] )
         end
     end
 end
 
 
-ws.send("Monitor Connected - Miner!")
+ws.send("MinerScreenSubscribe")
 
 while true do
   local _, url, response, isBinary = os.pullEvent("websocket_message")
@@ -36,11 +41,13 @@ while true do
 
     print(response)
 
-
-    if (string.find(response,"Miner1:")) then textlines[2] = response;
+    if (string.find(response,"MinerStatus:")) then MinerStatus = string.gsub(response, 12);
+    elseif (string.find(response,"Miner1:")) then textlines[2] = response;
     elseif (string.find(response,"Miner2:")) then textlines[3] = response;
     elseif (string.find(response,"Miner3:")) then textlines[4] = response;
     elseif (string.find(response,"Miner4:")) then textlines[5] = response;
+    elseif (string.find(response,"Miner5:")) then textlines[5] = response;
+    elseif (string.find(response,"Miner6:")) then textlines[5] = response;
     else term.write("weird message: " + response)
     end
     
