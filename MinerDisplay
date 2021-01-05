@@ -1,3 +1,6 @@
+local textlines = {"    Mining Turtles Status     ","------------------------------"}
+
+-- Connect to WebScoket
 local connectionURL = "ws://minerws.igsteven.com:8080/display"
 
 local ws, err = http.websocket(connectionURL)
@@ -5,11 +8,25 @@ if not ws then
   return printError(err)
 end
 
--- Setup Monitor
-local monitor = peripheral.wrap( 'top' )
-term.redirect( monitor )
-monitor.clear();
-monitor.setCursorPos(0,0)
+
+-- Find and Setup Monitor
+local monitors = { peripheral.find("monitor") } 
+
+for i = 1, 
+    m = monitors[i]
+    m.setTextColor(colors.white)
+    
+    while true do
+        local input = read()
+        m.clear()
+
+        for i = 1, #list do
+            mon.setCursorPos( 1, i )
+            mon.write( list[i] )
+        end
+    end
+end
+
 
 ws.send("Monitor Connected - Miner!")
 
@@ -18,10 +35,22 @@ while true do
   if url == connectionURL then
 
     print(response)
-    monitor.clear()
-    monitor.setCursorPos(0,0)
-    monitor.write(response)
+    if (response:find("Miner1:" == 1) do
+        textlines[2] == response;
+    end table
 
+    if (response:find("Miner2:" == 1) do
+        textlines[3] == response;
+    end table 
+
+    if (response:find("Miner3:" == 1) do
+        textlines[4] == response;
+    end table
+
+    if (response:find("Miner4:" == 1) do
+        textlines[5] == response;
+    end table 
+    
     -- Don't forget to close the connection!
     -- ws.close()
 
