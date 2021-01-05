@@ -3,7 +3,7 @@ local MinerStatus = "Miner 1: ? | Miner 2: ? | Miner 3: ? | Miner 4: ? | Miner 5
 
 
 -- Connect to WebScoket
-local connectionURL = "ws://minerws.igsteven.com:8080/display"
+local connectionURL = "ws://minerws.igsteven.com:8080"
 
 local ws, err = http.websocket(connectionURL)
 if not ws then
@@ -21,9 +21,8 @@ for i = 1, #monitors do
     while true do
         local input = read()
         m.clear()
-
-        m.setCursorPos( 1, -1 )
-        m.write(MinerStatus)
+        textlines[12] = MinerStatus;
+        
 
         for i = 1, #textlines do
             m.setCursorPos( 1, i )
