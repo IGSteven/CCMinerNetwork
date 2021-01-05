@@ -1,23 +1,31 @@
-local monitor = peripheral.wrap( 'top' )
-term.redirect( monitor )
-local connectionURL = "ws://minerws.igsteven.com:8080/display";
+local connectionURL = "ws://minerws.igsteven.com:8080/display"
 
 local ws, err = http.websocket(connectionURL)
 if not ws then
   return printError(err)
 end
 
-ws.send("Hello world!")
+-- Setup Monitor
+local monitor = peripheral.wrap( 'top' )
+term.redirect( monitor )
+monitor.clear
+
+
+function StartsWith(String,Start)
+   return string.sub(String,1,string.len(Start))==Start
+end
+
+ws.send("Monitor Connected - Miner")
 
 while true do
   local _, url, response, isBinary = os.pullEvent("websocket_message")
   if url == connectionURL then
 
-    assert(response == "Hello world!", "Received wrong response!")
     print(response)
-
+    monitor.clear
     monitor.write(response)
-
+    
+    end
 
     -- Don't forget to close the connection!
     -- ws.close()
