@@ -32,14 +32,15 @@ for i = 1, #monitors do
     end
 end
 
-
-ws.send("MinerScreenSubscribe")
-
 while true do
   local _, url, response, isBinary = os.pullEvent("websocket_message")
   if url == connectionURL then
 
     print(response)
+
+    if (response == "Connected!"){
+        ws.send("MinerScreenSubscribe")
+    }
 
     if (string.find(response,"MinerStatus:")) then MinerStatus = string.gsub(response, 12);
     elseif (string.find(response,"Miner1:")) then textlines[2] = response;
