@@ -1,6 +1,6 @@
 local monitor = peripheral.wrap( 'top' )
 term.redirect( monitor )
-local connectionURL = "ws://minerws.igsteven.com:8080/display"
+local connectionURL = "ws://minerws.igsteven.com:8080/display";
 
 local ws, err = http.websocket(connectionURL)
 if not ws then
