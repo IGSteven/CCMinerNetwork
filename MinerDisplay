@@ -38,10 +38,11 @@ while true do
 
 
     if (string.find(response,"Miner1:")) then textlines[2] = response;
-    if (string.find(response,"Miner2:")) then textlines[3] = response;
-    if (string.find(response,"Miner3:")) then textlines[4] = response;
-    if (string.find(response,"Miner4:")) then textlines[5] = response;
+    elseif (string.find(response,"Miner2:")) then textlines[3] = response;
+    elseif (string.find(response,"Miner3:")) then textlines[4] = response;
+    elseif (string.find(response,"Miner4:")) then textlines[5] = response;
     else term.write("weird message: " + response)
+    end
     
     -- Don't forget to close the connection!
     -- ws.close()
