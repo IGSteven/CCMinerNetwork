@@ -36,10 +36,11 @@ while true do
 
     print(response)
 
-    if (response:find("Miner1:") == 1) then textlines[2] == response;
-    elseif (response:find("Miner2:") == 1)  then textlines[3] == response;
-    elseif (response:find("Miner3:") == 1)  then textlines[4] == response;
-    elseif (response:find("Miner4:") == 1)  then textlines[5] == response;
+
+    if (string.find(response,"Miner1:")) then textlines[2] == response;
+    if (string.find(response,"Miner2:")) then textlines[3] == response;
+    if (string.find(response,"Miner3:")) then textlines[4] == response;
+    if (string.find(response,"Miner4:")) then textlines[5] == response;
     else term.write("weird message: " + response)
     
     -- Don't forget to close the connection!
