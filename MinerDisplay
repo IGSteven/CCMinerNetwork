@@ -8,19 +8,19 @@ end
 -- Setup Monitor
 local monitor = peripheral.wrap( 'top' )
 term.redirect( monitor )
-monitor.clear
+monitor.clear();
+term.setCursorPos(0,0)
 
-ws.send("Monitor Connected - Miner")
+ws.send("Monitor Connected - Miner!")
 
 while true do
   local _, url, response, isBinary = os.pullEvent("websocket_message")
   if url == connectionURL then
 
     print(response)
-    monitor.clear
+    monitor.clear()
+    term.setCursorPos(0,0)
     monitor.write(response)
-    
-    end
 
     -- Don't forget to close the connection!
     -- ws.close()
