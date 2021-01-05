@@ -9,7 +9,7 @@ end
 local monitor = peripheral.wrap( 'top' )
 term.redirect( monitor )
 monitor.clear();
-term.setCursorPos(0,0)
+monitor.setCursorPos(0,0)
 
 ws.send("Monitor Connected - Miner!")
 
@@ -19,7 +19,7 @@ while true do
 
     print(response)
     monitor.clear()
-    term.setCursorPos(0,0)
+    monitor.setCursorPos(0,0)
     monitor.write(response)
 
     -- Don't forget to close the connection!
