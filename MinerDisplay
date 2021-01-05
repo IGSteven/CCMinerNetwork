@@ -12,7 +12,7 @@ end
 -- Find and Setup Monitor
 local monitors = { peripheral.find("monitor") } 
 
-for i = 1, 
+for i = 1, #monitors do
     m = monitors[i]
     m.setTextColor(colors.white)
     
@@ -35,19 +35,19 @@ while true do
   if url == connectionURL then
 
     print(response)
-    if (response:find("Miner1:" == 1) do
+    if (response:find("Miner1:" == 1)) do
         textlines[2] == response;
     end table
 
-    if (response:find("Miner2:" == 1) do
+    if (response:find("Miner2:" == 1)) do
         textlines[3] == response;
     end table 
 
-    if (response:find("Miner3:" == 1) do
+    if (response:find("Miner3:" == 1)) do
         textlines[4] == response;
     end table
 
-    if (response:find("Miner4:" == 1) do
+    if (response:find("Miner4:" == 1)) do
         textlines[5] == response;
     end table 
     
